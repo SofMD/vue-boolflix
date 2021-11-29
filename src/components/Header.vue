@@ -2,8 +2,13 @@
 
 <header>
     <form action="">
-        <input type="text" placeholder="Cerca film e serie TV">
-        <button>Search</button>
+        <input 
+          type="text" 
+          placeholder="Cerca film e serie TV" 
+          v-model.trim="searchMovie"
+          @keyup.enter="$emit('perfSearch', searchMovie)"
+        >
+        <button @click.prevent="$emit('perfSearch', searchMovie)">Search</button>
     </form>
 </header>
   
@@ -12,6 +17,12 @@
 <script>
 export default {
     name: 'Header', 
+
+    data() {
+        return {
+            searchMovie: '',
+        }
+    }
 
 }
 </script>
