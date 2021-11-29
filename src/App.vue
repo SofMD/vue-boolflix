@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <Header @perfSearch="searchMovie" />
+    <Header @perfSearch="getMovie" />
 
     <!-- main -->
     <main>
@@ -31,32 +31,22 @@ export default {
         };
      },
 
-    computed: {
-      movieFilter(){
-        return this.movieList.filter(item => {
-          return item.title.toLowerCase().includes(this.searchText.toLowerCase())
-        })
-        
-      },
-    },
-
 
     created(){
         this.getMovie();
     },
 
     methods: {
-        searchMovie(text) {
-          console.log(text);
-          this.searchText = text;
-        },
 
-        getMovie(){
+        getMovie(text){
+
+          this.searchText = text;
+
             //prendo dati da API
             axios.get('https://api.themoviedb.org/3/search/movie',{
                 params: {
                     api_key: '3035d057024a2a14b3c4646d0b7ba466',
-                    query: 'marvel' ,
+                    query: text ,
                     language: 'it-IT'
                 }
             })
