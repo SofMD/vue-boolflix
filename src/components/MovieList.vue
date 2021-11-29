@@ -2,20 +2,29 @@
   <section>
       <ul>
           <li v-for="(el, index) in movieList" :key="`movie-${index}}`">
-              <h2>{{el.title}}</h2>
-              <div>ORIGINAL TITLE: {{el.original_title}} </div>
-              <div>LANGUAGE: {{el.original_language}} </div>
-              <div>VOTE: {{el.vote_average}}</div>
+              <cardMovie
+                 :title="el.title"
+                 :originalTitle="el.original_title"
+                 :language="el.original_language"
+                 :vote="el.vote_average"
+               
+              
+              />
           </li>
       </ul>
   </section>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import cardMovie from '@/components/cardMovie.vue'
 
 export default {
     name: 'MovieList',
+
+    components: {
+        cardMovie,
+    },
 
     data(){
         return {
