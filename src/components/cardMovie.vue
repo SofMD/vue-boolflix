@@ -1,10 +1,12 @@
 <template>
   <div class="card">
+        <img :src="poster" >
         <h2>{{ title }}</h2>
         <div>ORIGINAL TITLE: {{ originalTitle }} </div>
         <div > 
           LANGUAGE:
           <img 
+            class="langFlags"
             v-if="isFlag"
             :src="require(`../assets/${ language }.png`)"
           >
@@ -32,6 +34,7 @@ export default {
     },
 
     props:{
+        poster: String,
         title: String,
         originalTitle: String,
         language: String,
@@ -44,7 +47,7 @@ export default {
 <style scoped lang="scss">
 .card {
 
-  img{
+  .langFlags{
     width: 30px;
   }
 }
