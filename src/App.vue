@@ -5,7 +5,7 @@
 
     <!-- main -->
     <main>
-      <MovieList :movies="movieList"/>
+      <MovieList :movies="movieList" :serietv="serieTvList"/>
     </main>
 
   </div>
@@ -27,14 +27,10 @@ export default {
     data(){
         return {
             movieList: null,
+            serieTvList: null,
             searchText: '',
         };
      },
-
-
-    created(){
-        this.getMovie();
-    },
 
     methods: {
 
@@ -51,8 +47,21 @@ export default {
                 }
             })
             .then(result => {
-                console.log(result.data.results)
                 this.movieList = result.data.results;
+            })
+            .catch(err => console.log(err));
+
+
+            //serie tv 
+            axios.get('https://api.themoviedb.org/3/search/tv', {
+              params: {
+                    api_key: '3035d057024a2a14b3c4646d0b7ba466',
+                    query: text ,
+                    language: 'it-IT'
+                }
+            })
+            .then(result => {
+                this.serieTvList = result.data.results;
             })
             .catch(err => console.log(err));
         },

@@ -1,10 +1,17 @@
 <template>
-  <div>
-        <h2>{{title}}</h2>
-        <div>ORIGINAL TITLE: {{originalTitle}} </div>
-        <div v-for="(ele, i) in flags" :key="`flag-${i}`">LANGUAGE: {{ele.en}} </div>
-        <div>VOTE: {{vote}}</div>
-        <!-- language -->
+  <div class="card">
+        <h2>{{ title }}</h2>
+        <div>ORIGINAL TITLE: {{ originalTitle }} </div>
+        <div > 
+          LANGUAGE:
+          <img 
+            v-if="isFlag"
+            :src="require(`../assets/${ language }.png`)"
+          >
+          <span v-else>{{ language }}</span>
+        </div>
+         <div>VOTE: {{ vote }}</div>
+
   </div>
 </template>
 
@@ -14,12 +21,15 @@ export default {
 
     data(){
         return {
-            flags: {
-                it: '@/assets/it.png',
-                en: '@/assets/en.png', 
-            }
+            flags: ['it', 'en']
         };
-     },
+    },
+
+    computed: {
+      isFlag(){
+        return this.flags.includes(this.language);
+      }
+    },
 
     props:{
         title: String,
@@ -31,6 +41,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+.card {
+
+  img{
+    width: 30px;
+  }
+}
 
 </style>

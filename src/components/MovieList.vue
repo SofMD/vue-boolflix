@@ -1,13 +1,26 @@
 <template>
   <section>
+      <!-- lista film -->
       <ul>
-          <li v-for="(el, index) in movies" :key="`movie-${index}}`">
+          <li v-for="(el, index) in movies" :key="`movie-${index}`">
               <cardMovie
                    :title="el.title"
                    :originalTitle="el.original_title"
                    :language="el.original_language"
                    :vote="el.vote_average"
-               />
+                />
+          </li>
+      </ul>
+
+      <!-- lista serie tv -->
+      <ul>
+          <li v-for="(el, index) in serietv" :key="`SERIE-${index}`">
+              <cardMovie
+                   :title="el.name"
+                   :originalTitle="el.original_name"
+                   :language="el.original_language"
+                   :vote="el.vote_average"
+                />
           </li>
       </ul>
   </section>
@@ -25,6 +38,7 @@ export default {
 
     props: {
         movies: Array,
+        serietv: Array,
     },
 
     
@@ -33,6 +47,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+section{
+    display: flex;
+    justify-content: space-around;
+}
 
 ul {
     margin: 30px;

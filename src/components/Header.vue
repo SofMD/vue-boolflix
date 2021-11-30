@@ -30,6 +30,7 @@ export default {
 <style scoped lang="scss">
 header {
     padding: 20px;
+    display: flex;
 
     button {
         margin: 10px;
