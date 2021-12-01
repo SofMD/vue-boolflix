@@ -62,8 +62,11 @@ export default {
 
 
 header {
-    background-color: #0a0a0a;
+    width: 100vw;
+    background-color: rgba($color: #0a0a0a, $alpha: 0.8);
     padding: 10px;
+    position: fixed;
+    
 
     .left-header{
 
@@ -117,7 +120,7 @@ header {
                 margin-right: 20px;
                 cursor: pointer;
             }
-            
+
 
         }
 

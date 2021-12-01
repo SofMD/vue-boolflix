@@ -1,20 +1,30 @@
 <template>
   <div class="card">
-        <img
-          v-if="poster"
-         :src="`https://image.tmdb.org/t/p/w185/${poster}`"
-         :alt="title"
+    <!-- immagini -->
+    <div class="cardPoster">
+         <img
+            v-if="poster"
+            :src="`https://image.tmdb.org/t/p/w185/${poster}`"
+            :alt="title"
          >
          <img 
-          class="nullposter"
-          v-else
-          :src="require('../assets/nullposter.png')" 
-          :alt="title"
+            class="nullposter"
+             v-else
+             :src="require('../assets/nullposter.png')" 
+             :alt="title"
          >
-        <h2>{{ title }}</h2>
-        <div>ORIGINAL TITLE: {{ originalTitle }} </div>
-        <div > 
-          LANGUAGE:
+    </div>
+
+    <div class="textCard ">
+        <!-- titolo -->
+        <div class="t-up card-title mb">  {{ title }}</div>
+        
+        <!-- titolo originale -->
+        <div class="mb">{{ originalTitle }} </div>
+        <!-- lingua -->
+
+        <div class="mb"> 
+          Language:
           <img 
             class="langFlags"
             v-if="isFlag"
@@ -22,11 +32,18 @@
           >
           <span v-else>{{ language }}</span>
         </div>
-         <div>
-           VOTE: 
+        <!-- descrizione -->
+        
+         <div class="overview mb">{{overview}}</div>
+         
+        <!-- voto -->
+         <div class="mb">
+           Vote: 
             <span v-for="(n, index) in votestar()" :key="`vote-${index}`"> <i class="fas fa-star"></i></span>
-    
           </div>
+    </div>
+
+        
 
   </div>
 </template>
@@ -54,6 +71,7 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number,
+        overview: String,
     },
 
     methods: {
@@ -72,13 +90,60 @@ export default {
 
 <style scoped lang="scss">
 .card {
+  font-size: 12px;
+  transition: all .2s;
 
-  .langFlags{
-    width: 30px;
+  .cardPoster,
+  .nullposter{
+    width: 235px;
+
+    img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      object-position: top;
+    }
   }
 
-  .nullposter{
-    width: 185px;
+  .textCard{
+    display: none;
+    color: white;
+    width: 100%;
+
+
+    .langFlags{
+        width: 20px;
+    }
+
+    .card-title{
+      font-size: 14px;
+      font-weight: bolder;
+    }
+
+    .overview{
+      padding: 5px;
+      font-size: 8px;
+    }
+
+  }
+
+
+}
+
+.card:hover {
+  transform: scale(1.2);
+  position: relative;
+  
+  .cardPoster{
+    filter: opacity(30%);
+  }
+
+  .textCard{
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 7px;
+
   }
 }
 

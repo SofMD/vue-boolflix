@@ -73,6 +73,7 @@ export default {
 <style lang="scss">
 @import '@/components/utilitys.scss';
 
+
 *{
   margin: 0;
   padding: 0;
@@ -81,5 +82,8 @@ export default {
 }
 
 
+body {
+   background-color: #141414;
+}
 
 </style>

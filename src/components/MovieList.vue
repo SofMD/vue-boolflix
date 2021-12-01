@@ -1,20 +1,23 @@
 <template>
   <section>
       <!-- lista film -->
-      <ul>
+      <h2>FILM</h2>
+      <ul class="movieList ls-style d-flex fl-wrap">
           <li v-for="(el, index) in movies" :key="`movie-${index}`">
               <cardMovie
                    :poster="el.poster_path"
                    :title="el.title"
                    :originalTitle="el.original_title"
                    :language="el.original_language"
+                   :overview="el.overview"
                    :vote="el.vote_average"
                 />
           </li>
       </ul>
 
       <!-- lista serie tv -->
-      <ul>
+      <h2>SERIE TV</h2>
+      <ul class="serieList ls-style d-flex fl-wrap">
           <li v-for="(el, index) in serietv" :key="`SERIE-${index}`">
               <cardMovie
                    :poster="el.poster_path"
@@ -49,17 +52,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/components/variables.scss';
+
 section{
-    display: flex;
-    justify-content: space-around;
-}
+    padding: 30px ;
+    padding-top: 100px;
 
-ul {
-    margin: 30px;
-
-    li{
-        margin: 30px;
+    h2{
+        font-size: 25px;
+        color: white;
+        transition: color 0.4s
+    }
+    h2:hover{
+        color: $hovergray;
     }
 }
+
+.movieList,
+.serieList{
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    li{
+        width: 225px;
+        margin-bottom: 50px;
+        margin-right: 10px;
+    }
+}
+
 
 </style>
