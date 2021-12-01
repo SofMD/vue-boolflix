@@ -1,6 +1,16 @@
 <template>
   <div class="card">
-        <img :src="poster" >
+        <img
+          v-if="poster"
+         :src="`https://image.tmdb.org/t/p/w185/${poster}`"
+         :alt="title"
+         >
+         <img 
+          class="nullposter"
+          v-else
+          :src="require('../assets/nullposter.png')" 
+          :alt="title"
+         >
         <h2>{{ title }}</h2>
         <div>ORIGINAL TITLE: {{ originalTitle }} </div>
         <div > 
@@ -12,7 +22,11 @@
           >
           <span v-else>{{ language }}</span>
         </div>
-         <div>VOTE: {{ vote }}</div>
+         <div>
+           VOTE: 
+            <span v-for="(n, index) in votestar()" :key="`vote-${index}`"> {{n}} <i class="fas fa-star"></i></span>
+    
+          </div>
 
   </div>
 </template>
@@ -23,7 +37,8 @@ export default {
 
     data(){
         return {
-            flags: ['it', 'en']
+            flags: ['it', 'en'],
+            newvote: Number,
         };
     },
 
@@ -39,7 +54,17 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number,
+    },
+
+    methods: {
+      votestar(){
+        this.newvote = Math.ceil(this.vote / 2);
+        console.log(this.newvote)
+      
+      }
     }
+
+
 
 }
 </script>
@@ -49,6 +74,10 @@ export default {
 
   .langFlags{
     width: 30px;
+  }
+
+  .nullposter{
+    width: 185px;
   }
 }
 

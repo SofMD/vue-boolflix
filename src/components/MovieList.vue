@@ -4,7 +4,7 @@
       <ul>
           <li v-for="(el, index) in movies" :key="`movie-${index}`">
               <cardMovie
-                   :poster="`https://image.tmdb.org/t/p/w185/${el.poster_path}`"
+                   :poster="el.poster_path"
                    :title="el.title"
                    :originalTitle="el.original_title"
                    :language="el.original_language"
@@ -17,7 +17,7 @@
       <ul>
           <li v-for="(el, index) in serietv" :key="`SERIE-${index}`">
               <cardMovie
-                   :poster="`https://image.tmdb.org/t/p/w185/${el.poster_path}`"
+                   :poster="el.poster_path"
                    :title="el.name"
                    :originalTitle="el.original_name"
                    :language="el.original_language"
