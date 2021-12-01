@@ -24,7 +24,7 @@
         </div>
          <div>
            VOTE: 
-            <span v-for="(n, index) in votestar()" :key="`vote-${index}`"> {{n}} <i class="fas fa-star"></i></span>
+            <span v-for="(n, index) in votestar()" :key="`vote-${index}`"> <i class="fas fa-star"></i></span>
     
           </div>
 
@@ -60,6 +60,7 @@ export default {
       votestar(){
         this.newvote = Math.ceil(this.vote / 2);
         console.log(this.newvote)
+        return this.newvote
       
       }
     }
