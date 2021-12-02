@@ -20,7 +20,7 @@
     </section>
 
     <!-- right-side -->
-    <section class="right-header d-flex">
+    <section class="right-header d-flex align-items-center">
         <!-- input text -->
         <form action="">
            <input 
@@ -36,7 +36,7 @@
         <!-- icons -->
         <ul class="header-icons ls-style d-flex align-items-center" >
             <li><i class="fas fa-bell"></i></li>
-            <li><i class="fas fa-user-circle"></i></li>
+            <li><img class="profileimg" src="@/assets/profilephoto.png" alt=""></li>
         </ul>
     </section>
     
@@ -66,6 +66,7 @@ header {
     background-color: rgba($color: #0a0a0a, $alpha: 0.8);
     padding: 10px;
     position: fixed;
+    z-index: 1;
     
 
     .left-header{
@@ -120,8 +121,10 @@ header {
                 margin-right: 20px;
                 cursor: pointer;
             }
+        }
 
-
+        .profileimg{
+            width: 30px;
         }
 
     }

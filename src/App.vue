@@ -5,7 +5,7 @@
 
     <!-- main -->
     <main>
-      <MovieList :movies="movieList" :serietv="serieTvList"/>
+      <MovieList :movies="movieList" :serietv="serieTvList" />
     </main>
 
   </div>
@@ -32,10 +32,16 @@ export default {
         };
      },
 
+    created() {
+      this.firstlist()
+       
+
+    },
+
     methods: {
 
+      // serie e film dati dalla ricerca input
         getMovie(text){
-
           this.searchText = text;
 
             //prendo dati da API
@@ -65,6 +71,26 @@ export default {
             })
             .catch(err => console.log(err));
         },
+
+        // serie e film presenti dall'inizio
+        firstlist(){
+         if(this.movieList === null || this.serieTvList === null){
+           axios.get('https://api.themoviedb.org/3/search/movie',{
+                params: {
+                    api_key: '3035d057024a2a14b3c4646d0b7ba466',
+                    query: 'i' ,
+                    language: 'it-IT'
+                }
+              })
+              .then(result => {
+                this.movieList = result.data.results;
+                this.serieTvList = result.data.results;
+              })
+              .catch(err => console.log(err));
+
+          }
+        
+        }
     },
 }
 

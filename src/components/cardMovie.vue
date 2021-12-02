@@ -77,7 +77,6 @@ export default {
     methods: {
       votestar(){
         this.newvote = Math.ceil(this.vote / 2);
-        console.log(this.newvote)
         return this.newvote
       
       }
@@ -135,7 +134,7 @@ export default {
   position: relative;
   
   .cardPoster{
-    filter: opacity(30%);
+    filter: brightness(30%)
   }
 
   .textCard{
