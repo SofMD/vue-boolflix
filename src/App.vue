@@ -33,7 +33,7 @@ export default {
      },
 
     created() {
-      this.firstlist()
+      this.firstlist();
        
 
     },
@@ -121,6 +121,10 @@ export default {
 
 body {
    background-color: #141414;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 </style>

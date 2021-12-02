@@ -1,7 +1,7 @@
 <template>
   <section>
       <!-- lista film -->
-      <h2>FILM</h2>
+      <h2 id="Filmclick">FILM</h2>
       <ul class="movieList ls-style d-flex fl-wrap">
           <li v-for="(el, index) in movies" :key="`movie-${index}`">
               <cardMovie
@@ -16,7 +16,7 @@
       </ul>
 
       <!-- lista serie tv -->
-      <h2>SERIE TV</h2>
+      <h2 id="SerieTVclick" >SERIE TV</h2>
       <ul class="serieList ls-style d-flex fl-wrap">
           <li v-for="(el, index) in serietv" :key="`SERIE-${index}`">
               <cardMovie
@@ -71,7 +71,7 @@ section{
 .movieList,
 .serieList{
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 60px;
     margin-bottom: 40px;
 
     li{

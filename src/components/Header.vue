@@ -11,8 +11,8 @@
         <!-- menù -->
         <ul class=" headerMenu ls-style d-flex">
             <li>Home</li>
-            <li>Serie Tv</li>
-            <li>Film</li>
+            <li><a class="alist" href="#SerieTVclick">Serie Tv</a> </li>
+            <li><a class="alist" href="#Filmclick">Film</a></li>
             <li>Nuovi e popolari</li>
             <li>La mia lista</li>
             
@@ -52,7 +52,7 @@ export default {
         return {
             searchMovie: '',
         }
-    }
+    },
 
 }
 </script>
