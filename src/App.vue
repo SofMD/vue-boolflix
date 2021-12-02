@@ -84,11 +84,22 @@ export default {
               })
               .then(result => {
                 this.movieList = result.data.results;
-                this.serieTvList = result.data.results;
               })
               .catch(err => console.log(err));
 
           }
+
+          axios.get('https://api.themoviedb.org/3/search/tv', {
+              params: {
+                    api_key: '3035d057024a2a14b3c4646d0b7ba466',
+                    query: 'i' ,
+                    language: 'it-IT'
+                }
+            })
+            .then(result => {
+                this.serieTvList = result.data.results;
+            })
+            .catch(err => console.log(err));
         
         }
     },
